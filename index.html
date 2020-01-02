@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="game">
+        <p>Press r, p, or s to start playing</p>
+    </div>
+
+<script type="text/javascript">
+// choices that computer and user can choose
+    var options = ["r","p", "s"];
+   //scoreboard
+    var wins = 0;
+    var losses = 0;
+    var ties = 0;
+
+    document.onkeyup = function() {
+        var userguess = String.fromCharCode(event.keyCode).toLowerCase();
+
+        //console.log(userguess);
+
+        var computerguess = options[Math.floor(Math.random()*options.length)];
+
+        //console.log(computerguess);
+
+        if (userguess== 'r' || userguess == 'p' || userguess == 's') {
+           //User Wins
+            if ((userguess== 'r') &&  (computerguess== 's')) {
+               // alert("You win!")
+               wins++;
+               //alert("Wins: " + wins);
+            }
+            if ((userguess== 's') &&  (computerguess== 'p')) {
+                //alert("You win!")
+                wins++;
+               //alert("Wins: " + wins);
+            }
+            if ((userguess== 'p') &&  (computerguess== 'r')) {
+               // alert("You win!") 
+               wins++;
+               //alert("Wins: " + wins);
+            }
+            //User Loses
+            if ((userguess== 'r') &&  (computerguess== 'p')) {
+               // alert("You lose!") 
+               losses++;
+               //alert("Losses: " + losses);
+            }
+            if ((userguess== 's') &&  (computerguess== 'r')) {
+               // alert("You lose!") 
+               losses++;
+               //alert("Losses: " + losses);
+            }
+            if ((userguess== 'p') &&  (computerguess== 's')) {
+               // alert("You lose!") 
+               losses++;
+              //alert("Losses: " + losses);
+            }
+            if (userguess== computerguess) {
+               // alert("You tie!")
+               ties++;
+              // alert("Ties: " + ties); 
+            }
+        }else {
+            alert("Please choose r, p, or s");
+        }
+
+        var html = "<p> Press r, p, or s to start playing </p>" +
+        "<p> wins: " + wins + "</p>" +
+        "<p> losses: " + losses + "</p>" +
+        "<p> ties: " + ties + "</p>";
+
+        document.querySelector('#game').innerHTML = html;
+    }
+</script>
+    
+</body>
+</html>
